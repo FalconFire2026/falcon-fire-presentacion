@@ -403,7 +403,7 @@ N[2]=`${topLogos}${head('Propuesta de valor','Un proveedor. Un sistema. Una gara
 <div class="kick rise" style="--d:.9;position:absolute;left:70px;top:632px">Cumplimos la normatividad</div>
 <div class="chips rise" style="--d:1;top:668px"><div class="chip">NSR-10 Título J y K</div><div class="chip">Normas internacionales</div><div class="chip">Normas nacionales</div></div>
 <p class="rise" style="--d:1.1;position:absolute;left:70px;right:70px;top:738px;text-align:center;font-size:18px;color:var(--mut)">Protegemos a las personas, los recursos y su empresa, y acortamos el tiempo para que el sistema entre en funcionamiento.</p>
-<div class="navb">${pill('‹ Atrás',30)}</div><div class="navb" style="left:auto;right:330px">${pill('Ver soluciones ›',38,'solid')}</div>${cta('Falcon Fire')}`;
+<div class="navb">${pill('‹ Atrás',30)}</div><div class="navb" style="left:auto;right:330px">${pill('Ver soluciones ›',3,'solid')}</div>${cta('Falcon Fire')}`;
 const MT=['1. SISTEMAS RCI','2. SISTEMA DE BOMBEO','3. ESPUMAS','4. PUERTAS','5. PROTECCIÓN PASIVA','6. DETECCIÓN Y ALARMA','7. TUBERÍAS','8. VENTILACIÓN','9. ENERGÍA','10. SEGURIDAD Y RESCATE'];
 const MG=["rci","bombeo","espumas","puertas","pasiva","deteccion","tuberias","ventilacion","energia","seguridad"];
 N[3]=`${topLogos}${head('Los más relevantes para Colombia','Elementos destacados')}
@@ -794,7 +794,7 @@ D.forEach((d,i)=>{const s=document.createElement('div');s.className='slide';
  s.querySelectorAll('.part,.hotp').forEach(e=>{const k=e.dataset.p??e.dataset.hl;e.onmouseenter=()=>s.querySelectorAll('.part').forEach(p=>p.classList.toggle('hl',p.dataset.p==k))});
  s.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`rotateY(${x*22}deg) rotateX(${-y*22}deg)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
  st.appendChild(s);slides.push(s)});
-const ORDER=[0,1,30,2,38,3,16,28,29,31,32,33,37,34];
+const ORDER=[0,1,30,2,3,16,28,29,31,32,33,37,34];
 const dots=document.getElementById('cur');D.forEach((d,i)=>{const e=document.createElement('i');e.onclick=()=>go(i);e.style.order=ORDER.indexOf(i);if(!ORDER.includes(i))e.style.display='none';dots.appendChild(e)});
 let cur=-1,busy=0;
 function counters(s){s.querySelectorAll('[data-count]').forEach(b=>{const t=+b.dataset.count,t0=performance.now()+700;const f=n=>{const p=Math.min(1,Math.max(0,(n-t0)/1600)),v=Math.round(t*(1-Math.pow(1-p,3)));b.textContent=(b.dataset.plain?'':'+')+v.toLocaleString('de-DE');if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
