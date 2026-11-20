@@ -11,11 +11,12 @@ button:disabled{opacity:.6;cursor:wait}#m{min-height:20px;margin-top:12px;font-s
 const SALT="LcNGwO689eMkx/yLqrv7Sg==",IT=600000,B=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
 let KEY=null;const cache={};
 async function dec(buf){const a=new Uint8Array(buf);return crypto.subtle.decrypt({name:'AES-GCM',iv:a.slice(0,12)},KEY,a.slice(12))}
-window.__vsrc=async p=>{if(cache[p])return cache[p];const r=await fetch(p);if(!r.ok)throw 1;const d=await dec(await r.arrayBuffer());return cache[p]=URL.createObjectURL(new Blob([d],{type:'video/mp4'}))};
+window.__vsrc=p=>cache[p]||(cache[p]=(async()=>{const r=await fetch(p);if(!r.ok)throw 1;const d=await dec(await r.arrayBuffer());return URL.createObjectURL(new Blob([d],{type:'video/mp4'}))})().catch(e=>{delete cache[p];throw e}));
+const __VORD=['video/vir-riv-naffco.mp4', 'video/vehiculo-arff.mp4', 'video/vehiculos-naffco.mp4', 'video/bombas-produccion.mp4', 'video/planta-produccion.mp4'];
 document.getElementById('f').onsubmit=async e=>{e.preventDefault();const m=document.getElementById('m'),bt=document.getElementById('bt');bt.disabled=true;m.style.color='#cfe';m.textContent='Verificando…';
 try{const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(document.getElementById('pw').value),'PBKDF2',false,['deriveKey']);
 KEY=await crypto.subtle.deriveKey({name:'PBKDF2',salt:B(SALT),iterations:IT,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
 const r=await fetch('app.bin');m.textContent='Abriendo presentación…';const t=new TextDecoder().decode(await dec(await r.arrayBuffer()));
-document.open();document.write(t);document.close()}
+document.open();document.write(t);document.close();(async()=>{for(const p of __VORD){try{await window.__vsrc(p)}catch(e){}}})()}
 catch(x){KEY=null;bt.disabled=false;m.style.color='#ffb4b4';m.textContent='Clave incorrecta. Intente de nuevo.'}};
 </script></body></html>
